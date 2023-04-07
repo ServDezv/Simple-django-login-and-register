@@ -1,0 +1,24 @@
+[
+    {
+        "model": "auth.user_role",
+        "pk": 1,
+        "fields": {
+            "nume": "user"
+        }
+    },
+    {
+        "model": "auth.user_role",
+        "pk": 2,
+        "fields": {
+          "nume": "webadmin"
+        }
+    },
+    {
+        "model": "auth.user_role",
+        "pk": 3,
+        "fields": {
+          "nume": "administrator",
+          "alias": "auditor"
+        }
+    }
+  ]
