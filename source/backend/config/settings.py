@@ -10,22 +10,36 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from django.core.management.utils import get_random_secret_key
+import json
+from django.core.exceptions import ImproperlyConfigured
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Unless otherwise specified, we run in dev environment.
+IS_PRODUCTION = os.environ.get('IS_PRODUCTION', default=None)
+
+if IS_PRODUCTION:
+    from .envsettings.prod.settings import *
+else:
+    from .envsettings.dev.settings import *
+
+with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
+    secrets = json.load(secrets_file)
+
+def get_secret(setting, secrets_dict=secrets):
+    """Get secret setting or fail with ImproperlyConfigured"""
+    try:
+        return secrets_dict[setting]
+    except KeyError:
+        raise ImproperlyConfigured("Set the {} setting".format(setting))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
+SECRET_KEY = get_secret('PROD_SECRET_KEY') if IS_PRODUCTION else get_secret('DEV_SECRET_KEY')
 
 CSRF_TRUSTED_ORIGINS = [
     "http://*.localhost:*",
@@ -94,10 +108,20 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DB_NAME = get_secret('DB_NAME')
+DB_USER = get_secret('DB_USER')
+DB_PASSWORD = get_secret('DB_PASSWORD')
+DB_HOST = get_secret('DB_HOST')
+DB_PORT = get_secret("DB_PORT")
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": DB_NAME,
+        "USER": DB_USER,
+        "PASSWORD": DB_PASSWORD,
+        "HOST": DB_HOST,
+        "PORT": DB_PORT
     }
 }
 
