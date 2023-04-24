@@ -17,6 +17,10 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+CONTENT_DIR = os.path.join(BASE_DIR,"content")
+
+TEMPLATES_DIR = os.path.join(CONTENT_DIR, "templates")
+
 # Unless otherwise specified, we run in dev environment.
 IS_PRODUCTION = os.environ.get('IS_PRODUCTION', default=None)
 
@@ -56,6 +60,11 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "config", # main app, for project settings configuration
+    "websites", # app that contains websites models,endpoints, etc.
+    # "accounts", # app that manages users and their roles
+    "api",
+    "dashboard", # dashboard
 ]
 
 THIRD_PARTY_APPS = [
@@ -89,7 +98,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ["templates"],
+        "DIRS": ["TEMPLATES_DIR"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -225,15 +234,15 @@ CORS_ALLOWED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(CONTENT_DIR, 'static'),
 ]
 
 STATIC_URL = "static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT =  os.path.join(CONTENT_DIR, 'staticfiles')
 
-MEDIA_URL = "uploads/"
-MEDIA_ROOT = BASE_DIR / "uploads"
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(CONTENT_DIR, 'media'),
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
