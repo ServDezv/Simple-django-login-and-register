@@ -1,4 +1,5 @@
-__pycache__/
+
+_pycache__/
 source/secrets.json
 celerybeat-schedule
 
@@ -12,3 +13,8 @@ source/content/static/
 env/
 
 db.sqlite3
+
+venv/
+secrets/
+ldap/
+

@@ -60,16 +60,6 @@
 
     -  React app available at`http://localhost:3000/`
 
-👉 [Github Pages](https://faisalnazik.github.io/Django-REST-Framework-React-BoilerPlate/)
-
-## ⭐️ Support
-
-Give a ⭐️ if this project helped you!
-
-## License ©
-
-[The MIT License](LICENSE)
-
 
 PROJECT STRUCTURE:
 
@@ -82,7 +72,6 @@ PROJECT STRUCTURE:
 4. dashboard: This app will provide the dashboard views for each type of user. It will include views such as UnauthenticatedDashboard, AdministratorDashboard, and AuditorDashboard. Each dashboard will display different information based on the user type, such as the status of all sites for unauthenticated users, and the status of the administrator's own sites for administrators.
 
 5. api: This app will provide the API views for the project, allowing external services to access and interact with the project data. It will include views such as SiteListAPIView and ScanResultCreateAPIView.
-
 
 Autorizareweb/ # Main configuration and setting for app  
 |-- config/  
@@ -114,3 +103,40 @@ Autorizareweb/ # Main configuration and setting for app
 
 |-- manage.py  
   
+=======
+Autorizareweb/
+|-- config/ # Main configuration and setting for app,
+|   |-- __init__.py
+|   |-- settings.py
+|   |-- urls.py
+|   |-- wsgi.py
+|-- websites/ # CRUD websites operations, scans, status updates, etc.
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- models.py
+|   |-- views.py
+|   |-- urls.py
+|-- accounts/ # Define user roles, authentification, permissions, etc.
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- models.py
+|   |-- views.py
+|   |-- urls.py
+|-- dashboard/ # Views and dashboards for different type of users( auditors, admins, normal users)
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- models.py
+|   |-- views.py
+|   |-- urls.py
+|-- api/ #API views to interract with react project
+|   |-- __init__.py
+|   |-- admin.py
+|   |-- apps.py
+|   |-- views.py
+|   |-- urls.py
+
+|-- manage.py
+

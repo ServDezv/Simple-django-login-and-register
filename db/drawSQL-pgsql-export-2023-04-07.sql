@@ -1,3 +1,36 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@Radus1k 
+ServDezv
+/
+Autorizare-web-2
+Public
+forked from ServDezv/Simple-django-login-and-register
+Fork your own copy of ServDezv/Autorizare-web-2
+Code
+Pull requests
+1
+Actions
+Projects
+Security
+Insights
+Settings
+Beta Try the new code view
+Autorizare-web-2/db/drawSQL-pgsql-export-2023-04-07.sql
+@ArtOfFugue66
+ArtOfFugue66 [NO-ROLE]-[NO-PAGE]-[Actualizare commit history]
+Latest commit e782eab yesterday
+ History
+ 1 contributor
+192 lines (192 sloc)  6.85 KB
+ 
+
 CREATE TABLE "localitate"(
     "id" BIGINT NOT NULL,
     "nume" VARCHAR(100) NOT NULL,
@@ -31,24 +64,24 @@ ON COLUMN
     "website_state"."stare" IS 'Vom avea "Neacreditat", "În curs de acreditare", "Acreditat" + alte stări pe care le identificăm pe parcursul dezvoltării';
 CREATE TABLE "website"(
     "id" BIGINT NOT NULL,
-    "um_gazda" BIGINT NOT NULL,
-    "um_detinator" BIGINT NOT NULL,
-    "um_beneficiar" BIGINT NOT NULL,
+    "um_gazda (FK)" BIGINT NOT NULL,
+    "um_detinator (FK)" BIGINT NOT NULL,
+    "um_beneficiar (FK)" BIGINT NOT NULL,
     "url" VARCHAR(100) NOT NULL,
     "ip_public" VARCHAR(100) NOT NULL,
     "nume_isp" VARCHAR(100) NOT NULL,
-    "stare" BIGINT NOT NULL
+    "stare (FK)" BIGINT NOT NULL
 );
 ALTER TABLE
     "website" ADD PRIMARY KEY("id");
-CREATE INDEX "website_um_gazda_index" ON
-    "website"("um_gazda");
-CREATE INDEX "website_um_detinator_index" ON
-    "website"("um_detinator");
-CREATE INDEX "website_um_beneficiar_index" ON
-    "website"("um_beneficiar");
-CREATE INDEX "website_stare_index" ON
-    "website"("stare");
+CREATE INDEX "website_um_gazda (fk)_index" ON
+    "website"("um_gazda (FK)");
+CREATE INDEX "website_um_detinator (fk)_index" ON
+    "website"("um_detinator (FK)");
+CREATE INDEX "website_um_beneficiar (fk)_index" ON
+    "website"("um_beneficiar (FK)");
+CREATE INDEX "website_stare (fk)_index" ON
+    "website"("stare (FK)");
 CREATE TABLE "user_grad"(
     "id" BIGINT NOT NULL,
     "denumire_grad" VARCHAR(100) NOT NULL
@@ -57,11 +90,11 @@ ALTER TABLE
     "user_grad" ADD PRIMARY KEY("id");
 CREATE TABLE "user"(
     "id" BIGINT NOT NULL,
-    "grad" BIGINT NOT NULL,
+    "grad (FK)" BIGINT NOT NULL,
     "nume" VARCHAR(100) NOT NULL,
     "prenume" VARCHAR(100) NOT NULL,
-    "unitate" BIGINT NOT NULL,
-    "rol" BIGINT NOT NULL,
+    "unitate (FK)" BIGINT NOT NULL,
+    "rol (FK)" BIGINT NOT NULL,
     "email_intra" VARCHAR(100) NOT NULL,
     "email_inter" VARCHAR(100) NOT NULL,
     "telefon_rtp" VARCHAR(100) NOT NULL,
@@ -69,12 +102,12 @@ CREATE TABLE "user"(
 );
 ALTER TABLE
     "user" ADD PRIMARY KEY("id");
-CREATE INDEX "user_grad_index" ON
-    "user"("grad");
-CREATE INDEX "user_unitate_index" ON
-    "user"("unitate");
-CREATE INDEX "user_rol_index" ON
-    "user"("rol");
+CREATE INDEX "user_grad (fk)_index" ON
+    "user"("grad (FK)");
+CREATE INDEX "user_unitate (fk)_index" ON
+    "user"("unitate (FK)");
+CREATE INDEX "user_rol (fk)_index" ON
+    "user"("rol (FK)");
 COMMENT
 ON COLUMN
     "user"."email_intra" IS 'Va fi obținut din detaliile contului din Active Directory (autentificare LDAP)';
@@ -85,15 +118,15 @@ CREATE TABLE "um"(
     "id" BIGINT NOT NULL,
     "indicativ" VARCHAR(20) NOT NULL,
     "denumire" VARCHAR(100) NOT NULL,
-    "localitate" BIGINT NOT NULL,
+    "localitate (FK)" BIGINT NOT NULL,
     "lat" DOUBLE PRECISION NULL,
     "lng" DOUBLE PRECISION NULL,
     "crisc" BOOLEAN NOT NULL DEFAULT '0'
 );
 ALTER TABLE
     "um" ADD PRIMARY KEY("id");
-CREATE INDEX "um_localitate_index" ON
-    "um"("localitate");
+CREATE INDEX "um_localitate (fk)_index" ON
+    "um"("localitate (FK)");
 COMMENT
 ON COLUMN
     "um"."lat" IS 'Latitudinea';
@@ -105,34 +138,34 @@ ON COLUMN
     "um"."crisc" IS 'By default = False; La înregistrarea UM-ului de către administrator, se va putea marca ca fiind True din UI';
 CREATE TABLE "ssl_certificate"(
     "id" BIGINT NOT NULL,
-    "website" BIGINT NOT NULL,
+    "website (FK)" BIGINT NOT NULL,
     "ca_semnatar" VARCHAR(100) NULL,
     "data_expirare" DATE NULL
 );
 ALTER TABLE
     "ssl_certificate" ADD PRIMARY KEY("id");
-CREATE INDEX "ssl_certificate_website_index" ON
-    "ssl_certificate"("website");
+CREATE INDEX "ssl_certificate_website (fk)_index" ON
+    "ssl_certificate"("website (FK)");
 COMMENT
 ON COLUMN
-    "ssl_certificate"."website" IS 'One-to-many: Un site web poate avea un singur certificat SSL la un moment dat, dar un certificat SSL poate fi utilizat de mai multe site-uri web (ex., certificat wildcard)';
+    "ssl_certificate"."website (FK)" IS 'One-to-many: Un site web poate avea un singur certificat SSL la un moment dat, dar un certificat SSL poate fi utilizat de mai multe site-uri web (ex., certificat wildcard)';
 CREATE TABLE "website_history"(
     "id" BIGINT NOT NULL,
-    "website" BIGINT NOT NULL,
+    "website (FK)" BIGINT NOT NULL,
     "data" DATE NOT NULL,
-    "stare_veche" BIGINT NULL,
-    "stare_noua" BIGINT NOT NULL
+    "stare_veche (FK)" BIGINT NULL,
+    "stare_noua (FK)" BIGINT NOT NULL
 );
 ALTER TABLE
     "website_history" ADD PRIMARY KEY("id");
-CREATE INDEX "website_history_website_index" ON
-    "website_history"("website");
+CREATE INDEX "website_history_website (fk)_index" ON
+    "website_history"("website (FK)");
 COMMENT
 ON COLUMN
-    "website_history"."stare_veche" IS 'Inițial, va fi null și va trebui să tratăm în cod acest caz ca să nu generăm erori.';
+    "website_history"."stare_veche (FK)" IS 'Inițial, va fi null și va trebui să tratăm în cod acest caz ca să nu generăm erori.';
 CREATE TABLE "server_info"(
     "id" BIGINT NOT NULL,
-    "website" BIGINT NOT NULL,
+    "website (FK)" BIGINT NOT NULL,
     "os_version" VARCHAR(100) NOT NULL,
     "cms_version" VARCHAR(100) NULL,
     "service_name" VARCHAR(100) NOT NULL,
@@ -140,8 +173,8 @@ CREATE TABLE "server_info"(
 );
 ALTER TABLE
     "server_info" ADD PRIMARY KEY("id");
-CREATE INDEX "server_info_website_index" ON
-    "server_info"("website");
+CREATE INDEX "server_info_website (fk)_index" ON
+    "server_info"("website (FK)");
 COMMENT
 ON COLUMN
     "server_info"."os_version" IS 'Exemple: Ubuntu 20.04, Windows 21H2';
@@ -165,28 +198,42 @@ COMMENT
 ON COLUMN
     "user_role"."alias" IS 'La ''administrator'' alias-ul va fi ''auditor''; Câmpul este opțional';
 ALTER TABLE
-    "website" ADD CONSTRAINT "website_stare_foreign" FOREIGN KEY("stare") REFERENCES "website_state"("id");
+    "website" ADD CONSTRAINT "website_stare (fk)_foreign" FOREIGN KEY("stare (FK)") REFERENCES "website_state"("id");
 ALTER TABLE
-    "website" ADD CONSTRAINT "website_um_beneficiar_foreign" FOREIGN KEY("um_beneficiar") REFERENCES "um"("id");
+    "website" ADD CONSTRAINT "website_um_beneficiar (fk)_foreign" FOREIGN KEY("um_beneficiar (FK)") REFERENCES "um"("id");
 ALTER TABLE
-    "ssl_certificate" ADD CONSTRAINT "ssl_certificate_website_foreign" FOREIGN KEY("website") REFERENCES "website"("id");
+    "ssl_certificate" ADD CONSTRAINT "ssl_certificate_website (fk)_foreign" FOREIGN KEY("website (FK)") REFERENCES "website"("id");
 ALTER TABLE
-    "website_history" ADD CONSTRAINT "website_history_stare_veche_foreign" FOREIGN KEY("stare_veche") REFERENCES "website_state"("id");
+    "website_history" ADD CONSTRAINT "website_history_stare_veche (fk)_foreign" FOREIGN KEY("stare_veche (FK)") REFERENCES "website_state"("id");
 ALTER TABLE
-    "user" ADD CONSTRAINT "user_grad_foreign" FOREIGN KEY("grad") REFERENCES "user_grad"("id");
+    "user" ADD CONSTRAINT "user_grad (fk)_foreign" FOREIGN KEY("grad (FK)") REFERENCES "user_grad"("id");
 ALTER TABLE
-    "server_info" ADD CONSTRAINT "server_info_website_foreign" FOREIGN KEY("website") REFERENCES "website"("id");
+    "server_info" ADD CONSTRAINT "server_info_website (fk)_foreign" FOREIGN KEY("website (FK)") REFERENCES "website"("id");
 ALTER TABLE
-    "website_history" ADD CONSTRAINT "website_history_stare_noua_foreign" FOREIGN KEY("stare_noua") REFERENCES "website_state"("id");
+    "website_history" ADD CONSTRAINT "website_history_stare_noua (fk)_foreign" FOREIGN KEY("stare_noua (FK)") REFERENCES "website_state"("id");
 ALTER TABLE
-    "website_history" ADD CONSTRAINT "website_history_website_foreign" FOREIGN KEY("website") REFERENCES "website"("id");
+    "website_history" ADD CONSTRAINT "website_history_website (fk)_foreign" FOREIGN KEY("website (FK)") REFERENCES "website"("id");
 ALTER TABLE
-    "website" ADD CONSTRAINT "website_um_gazda_foreign" FOREIGN KEY("um_gazda") REFERENCES "um"("id");
+    "website" ADD CONSTRAINT "website_um_gazda (fk)_foreign" FOREIGN KEY("um_gazda (FK)") REFERENCES "um"("id");
 ALTER TABLE
-    "user" ADD CONSTRAINT "user_unitate_foreign" FOREIGN KEY("unitate") REFERENCES "um"("id");
+    "user" ADD CONSTRAINT "user_unitate (fk)_foreign" FOREIGN KEY("unitate (FK)") REFERENCES "um"("id");
 ALTER TABLE
-    "um" ADD CONSTRAINT "um_localitate_foreign" FOREIGN KEY("localitate") REFERENCES "localitate"("id");
+    "um" ADD CONSTRAINT "um_localitate (fk)_foreign" FOREIGN KEY("localitate (FK)") REFERENCES "localitate"("id");
 ALTER TABLE
-    "website" ADD CONSTRAINT "website_um_detinator_foreign" FOREIGN KEY("um_detinator") REFERENCES "um"("id");
+    "website" ADD CONSTRAINT "website_um_detinator (fk)_foreign" FOREIGN KEY("um_detinator (FK)") REFERENCES "um"("id");
 ALTER TABLE
-    "user" ADD CONSTRAINT "user_rol_foreign" FOREIGN KEY("rol") REFERENCES "user_role"("id");
+    "user" ADD CONSTRAINT "user_rol (fk)_foreign" FOREIGN KEY("rol (FK)") REFERENCES "user_role"("id");
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
