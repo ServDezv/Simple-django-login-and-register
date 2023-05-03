@@ -1,5 +1,3 @@
-<h1 align="left">DRF React & Redux Boilerplate</h1>
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/faisalnazik/Django-React-Redux-Boilerplate/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/faisalnazik/Django-React-Redux-Boilerplate/tree/main)
@@ -9,13 +7,8 @@
 
 ## Frontend ⭐
 
-- Minimal Template with neccessary components✔
-- Configured Redux Store✔
-- Auto formatted with Prettier ✔
-- React with functional components and hooks ✔
-- Forms Validation with Formik ✔
-- Login , example to understand the JWT auth ✔
-- Server Errors Handling✔
+-Django Templates
+-Bootstrap 5 
 
 ## Backend🛠
 

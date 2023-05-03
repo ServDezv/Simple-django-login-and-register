@@ -1,3 +1,7 @@
 ldap/*
 ldap/
 secrets/
+__pycache__/
+source/secrets.json
+db.sqlite3
+celerybeat-schedule
