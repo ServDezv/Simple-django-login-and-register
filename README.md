@@ -92,33 +92,33 @@ PROJECT STRUCTURE:
 
 
 Autorizareweb/
-|-- config/ # Main configuration and setting for app,
+|-- config/
 |   |-- __init__.py
 |   |-- settings.py
 |   |-- urls.py
 |   |-- wsgi.py
-|-- websites/ # CRUD websites operations, scans, status updates, etc.
+|-- websites/
 |   |-- __init__.py
 |   |-- admin.py
 |   |-- apps.py
 |   |-- models.py
 |   |-- views.py
 |   |-- urls.py
-|-- accounts/ # Define user roles, authentification, permissions, etc.
+|-- accounts/
 |   |-- __init__.py
 |   |-- admin.py
 |   |-- apps.py
 |   |-- models.py
 |   |-- views.py
 |   |-- urls.py
-|-- dashboard/ # Views and dashboards for different type of users( auditors, admins, normal users)
+|-- dashboard/
 |   |-- __init__.py
 |   |-- admin.py
 |   |-- apps.py
 |   |-- models.py
 |   |-- views.py
 |   |-- urls.py
-|-- api/ #API views to interract with react project
+|-- api/
 |   |-- __init__.py
 |   |-- admin.py
 |   |-- apps.py
