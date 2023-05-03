@@ -91,38 +91,39 @@ PROJECT STRUCTURE:
 5. api: This app will provide the API views for the project, allowing external services to access and interact with the project data. It will include views such as SiteListAPIView and ScanResultCreateAPIView.
 
 
-Autorizareweb/
-|-- config/
-|   |-- __init__.py
-|   |-- settings.py
-|   |-- urls.py
-|   |-- wsgi.py
-|-- websites/
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- models.py
-|   |-- views.py
-|   |-- urls.py
-|-- accounts/
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- models.py
-|   |-- views.py
-|   |-- urls.py
-|-- dashboard/
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- models.py
-|   |-- views.py
-|   |-- urls.py
-|-- api/
-|   |-- __init__.py
-|   |-- admin.py
-|   |-- apps.py
-|   |-- views.py
-|   |-- urls.py
-
-|-- manage.py
+Autorizareweb/  
+|-- config/  
+|   |-- __init__.py  
+|   |-- settings.py  
+|   |-- urls.py  
+|   |-- wsgi.py  
+|-- websites/  
+|   |-- __init__.py  
+|   |-- admin.py  
+|   |-- apps.py  
+|   |-- models.py  
+|   |-- views.py  
+|   |-- urls.py  
+|-- accounts/  
+|   |-- __init__.py  
+|   |-- admin.py  
+|   |-- apps.py  
+|   |-- models.py  
+|   |-- views.py  
+|   |-- urls.py  
+|-- dashboard/  
+|   |-- __init__.py  
+|   |-- admin.py  
+|   |-- apps.py  
+|   |-- models.py  
+|   |-- views.py  
+|   |-- urls.py  
+|-- api/  
+|   |-- __init__.py  
+|   |-- admin.py  
+|   |-- apps.py  
+|   |-- views.py  
+|   |-- urls.py  
+  
+|-- manage.py  
+  
