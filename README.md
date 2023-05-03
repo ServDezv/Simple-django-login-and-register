@@ -91,27 +91,27 @@ PROJECT STRUCTURE:
 5. api: This app will provide the API views for the project, allowing external services to access and interact with the project data. It will include views such as SiteListAPIView and ScanResultCreateAPIView.
 
 
-Autorizareweb/  
+Autorizareweb/ # Main configuration and setting for app  
 |-- config/  
 | &nbsp;|-- __init__.py  
 | &nbsp;|-- settings.py  
 | &nbsp;|-- urls.py  
 | &nbsp;|-- wsgi.py  
-|-- websites/  
+|-- websites/ # CRUD websites operations, scans, status    
 | &nbsp;   |-- __init__.py  
 | &nbsp;   |-- admin.py  
 | &nbsp;   |-- apps.py  
 | &nbsp;   |-- models.py  
 | &nbsp;   |-- views.py  
 | &nbsp;   |-- urls.py  
-|-- accounts/  
+|-- accounts/   # Define user roles, authentification, permissions  
 | &nbsp;   |-- __init__.py  
 | &nbsp;   |-- admin.py  
 | &nbsp;   |-- apps.py  
 | &nbsp;   |-- models.py  
 | &nbsp;   |-- views.py  
 | &nbsp;   |-- urls.py  
-|-- dashboard/  
+|-- dashboard/   # Views and dashboards for different type of users (auditors, admins, normal users)  
 | &nbsp;   |-- __init__.py  
 | &nbsp;   |-- admin.py  
 | &nbsp;   |-- apps.py  
