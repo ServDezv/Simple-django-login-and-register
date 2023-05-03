@@ -93,10 +93,10 @@ PROJECT STRUCTURE:
 
 Autorizareweb/  
 |-- config/  
-| &nbsp; &nbsp;&nbsp;|-- __init__.py  
-| &nbsp; &nbsp;   |-- settings.py  
-| &nbsp; &nbsp;   |-- urls.py  
-| &nbsp; &nbsp;   |-- wsgi.py  
+| &nbsp;|-- __init__.py  
+| &nbsp;|-- settings.py  
+| &nbsp;|-- urls.py  
+| &nbsp;|-- wsgi.py  
 |-- websites/  
 | &nbsp;   |-- __init__.py  
 | &nbsp;   |-- admin.py  
