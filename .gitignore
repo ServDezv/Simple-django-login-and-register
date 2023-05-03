@@ -5,4 +5,4 @@ __pycache__/
 source/secrets.json
 db.sqlite3
 celerybeat-schedule
-env/
+env
