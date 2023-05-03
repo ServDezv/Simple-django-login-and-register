@@ -125,19 +125,10 @@ services:
     secrets:
       - postgres_password
   ldap_localserver:
-    image: osixia/openldap:1.5.0
-    environment:
-      LDAP_TLS_VERIFY_CLIENT: never
-      LDAP_ADMIN_PASSWORD: mypassword
-      # LDAP_TLS_CRT_FILENAME: cert/ldap.crt
-      # LDAP_TLS_KEY_FILENAME: cert/ldap.key
+    image: rroemhild/test-openldap
     ports:
-      - "389:389"
-      - "636:636"
-    volumes:
-      # - ./ldap/certs:/container/service/slapd/assets/certs/cert/
-      - ./ldap/data:/var/lib/ldap
-      - ./ldap/config:/container/service/slapd/assets/config/bootstrap/ldif/custom
+      - "10389:10389"
+      - "10636:10636"
 
 secrets:
   postgres_password:
