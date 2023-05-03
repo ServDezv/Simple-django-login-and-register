@@ -93,37 +93,31 @@ PROJECT STRUCTURE:
 
 Autorizareweb/  
 |-- config/  
-| &nbsp; &nbsp;|-- __init__.py  
-|   |-- settings.py  
-|   |-- urls.py  
-|   |-- wsgi.py  
+| &nbsp; &nbsp;&nbsp;|-- __init__.py  
+| &nbsp; &nbsp;   |-- settings.py  
+| &nbsp; &nbsp;   |-- urls.py  
+| &nbsp; &nbsp;   |-- wsgi.py  
 |-- websites/  
-|   |-- __init__.py  
-|   |-- admin.py  
-|   |-- apps.py  
-|   |-- models.py  
-|   |-- views.py  
-|   |-- urls.py  
+| &nbsp;   |-- __init__.py  
+| &nbsp;   |-- admin.py  
+| &nbsp;   |-- apps.py  
+| &nbsp;   |-- models.py  
+| &nbsp;   |-- views.py  
+| &nbsp;   |-- urls.py  
 |-- accounts/  
-|   |-- __init__.py  
-|   |-- admin.py  
-|   |-- apps.py  
-|   |-- models.py  
-|   |-- views.py  
-|   |-- urls.py  
+| &nbsp;   |-- __init__.py  
+| &nbsp;   |-- admin.py  
+| &nbsp;   |-- apps.py  
+| &nbsp;   |-- models.py  
+| &nbsp;   |-- views.py  
+| &nbsp;   |-- urls.py  
 |-- dashboard/  
-|   |-- __init__.py  
-|   |-- admin.py  
-|   |-- apps.py  
-|   |-- models.py  
-|   |-- views.py  
-|   |-- urls.py  
-|-- api/  
-|   |-- __init__.py  
-|   |-- admin.py  
-|   |-- apps.py  
-|   |-- views.py  
-|   |-- urls.py  
-  
+| &nbsp;   |-- __init__.py  
+| &nbsp;   |-- admin.py  
+| &nbsp;   |-- apps.py  
+| &nbsp;   |-- models.py  
+| &nbsp;   |-- views.py  
+| &nbsp;   |-- urls.py  
+
 |-- manage.py  
   
