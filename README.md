@@ -6,7 +6,7 @@
 
 ## Frontend ⭐
 
--Django Templates
+-Django Templates<br>
 -Bootstrap 5 
 
 ## Backend🛠
