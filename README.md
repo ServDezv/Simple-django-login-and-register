@@ -1,6 +1,5 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/faisalnazik/Django-React-Redux-Boilerplate/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/faisalnazik/Django-React-Redux-Boilerplate/tree/main)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1dc1d840640dad52e38f/maintainability)](https://codeclimate.com/github/faisalnazik/Django-REST-Framework-React-BoilerPlate/maintainability)
 
 ![](image/README/1650208713974.png)![1671452013971](image/README/1671452013971.png)
@@ -46,19 +45,6 @@
 
     Admin available at`http://localhost:8000/admin/`
 
-### Frontend
-
-    - Install dependencies in frontend app using following commands in separate terminal
-    - First make sure you have installed Node.js, v18.12.1. while upgrading this setup.
-
-    For More info https://nodejs.org/en/
-
-    - Then run following commands in frontend dir
-
-    $ yarn install
-    $ yarn start
-
-    -  React app available at`http://localhost:3000/`
 
 
 PROJECT STRUCTURE:
