@@ -14,7 +14,10 @@ if IS_PRODUCTION:
 else:
     from .conf.development.settings import *
 
-with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
+BASE_PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
+SECRETS_DIR = (os.path.join(BASE_PARENT_DIR, 'secrets'))
+print("SECRETS DIR :", SECRETS_DIR)
+with open(os.path.join(SECRETS_DIR, 'secrets.json')) as secrets_file:
     secrets = json.load(secrets_file)
 
 def get_secret(setting, secrets_dict=secrets):

@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.conf import settings
-from django.urls import path, include
-from django.conf.urls.static import static
+from django.urls import path
+from .views import *
 
-from main.views import IndexPageView, ChangeLanguageView
-
+urlpatterns = [
+    path("add_site/", add_site_view, name="add_site"), 
+    path("edit_site/<int:id>/", edit_site_view, name="edit_site"),
+    path("remove_site/<int:id>/", remove_site_view, name="remove_site")
+]
